@@ -23,7 +23,8 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write ."
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -46,9 +47,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "eslint-plugin-storybook": "^0.6.12",
+    "prettier": "^2.8.8",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.9",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
+  },
+  "dependencies": {
+    "vite-plugin-svgr": "^3.2.0"
   }
 }
