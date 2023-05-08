@@ -16,15 +16,18 @@ const SearchBox = (props: searchBoxProps) => {
   }, [backgroundColor]);
   return (
     <div>
-      <div style={{ ...containerStyles }} className={styles["container"]}>
-        <SearchIcon className={styles["container-icon"]} />
+      <div
+        style={{ ...containerStyles }}
+        className={styles["searchBoxContainer"]}
+      >
+        <SearchIcon className={styles["searchBoxContainer-icon"]} />
         <input
           type="text"
           name="search"
           placeholder={placeHolder}
           value={inputValue}
           onChange={(e) => setInpuValue(e.target.value)}
-          className={styles["container-input"]}
+          className={styles["searchBoxContainer-input"]}
         />
       </div>
     </div>

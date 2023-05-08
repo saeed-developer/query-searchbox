@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import SearchBox from "./SearchBox";
 
 const meta = {
-  title: "SearchBox",
+  title: "components/SearchBox",
   component: SearchBox,
   tags: ["docsPage"],
   argTypes: {
