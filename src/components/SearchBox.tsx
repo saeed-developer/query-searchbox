@@ -1,19 +1,24 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import styles from "./searchBox.module.css";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
-interface searchBoxProps {
-  placeHolder?: string;
-  backgroundColor: string;
-  operator: string[];
-  filters: string[];
-  filterTypes: string[];
-}
+import { TUseSuggestion } from "../types/filter";
+import { TSearchBox } from "../types/searchBox";
+import { ButtonProps } from "./Button";
+interface searchBoxProps extends TUseSuggestion, TSearchBox {}
 const SearchBox = (props: searchBoxProps) => {
   const { backgroundColor, placeHolder = "search" } = props;
+  const [step, setStep] = useState<number>(0);
+  const [currentValue, setCurrentValue] = useState("");
   const [inputValue, setInpuValue] = useState<string>();
   const containerStyles = useMemo(() => {
     return { backgroundColor: backgroundColor };
   }, [backgroundColor]);
+  useEffect(() => {
+    if (!inputValue?.slice(-1)) {
+      setCurrentValue("");
+    }
+    // setCurrentValue()
+  }, [inputValue]);
   return (
     <div>
       <div

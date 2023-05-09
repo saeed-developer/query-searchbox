@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import  QuerySearchBox  from "./QuerySearchBox";
+import QuerySearchBox from "./QuerySearchBox";
 const meta = {
   title: "Pages/main",
   component: QuerySearchBox,
   tags: ["autodocs"],
-  argTypes: {
-
-  },
+  argTypes: {},
 } satisfies Meta<typeof QuerySearchBox>;
 
 export default meta;
@@ -17,4 +15,3 @@ export const Primary: Story = {
     label: "QuerySearchBox",
   },
 };
-

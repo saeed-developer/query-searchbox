@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import styles from "./button.module.css";
-interface ButtonProps {
+export interface ButtonProps {
   title: string;
   color?: string;
   background?: string;
