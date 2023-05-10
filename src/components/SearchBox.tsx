@@ -4,9 +4,17 @@ import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { TUseSuggestion } from "../types/filter";
 import { TSearchBox } from "../types/searchBox";
 import { ButtonProps } from "./Button";
+import useSuggestion from "../hooks/useSuggestion";
 interface searchBoxProps extends TUseSuggestion, TSearchBox {}
 const SearchBox = (props: searchBoxProps) => {
-  const { backgroundColor, placeHolder = "search" } = props;
+  const {
+    backgroundColor,
+    placeHolder = "search",
+    operators,
+    filters,
+    filterTypes,
+    filterValues,
+  } = props;
   const [step, setStep] = useState<number>(0);
   const [currentValue, setCurrentValue] = useState("");
   const [inputValue, setInpuValue] = useState<string>();
@@ -16,9 +24,18 @@ const SearchBox = (props: searchBoxProps) => {
   useEffect(() => {
     if (!inputValue?.slice(-1)) {
       setCurrentValue("");
+      setStep((step) => step + 1);
     }
     // setCurrentValue()
   }, [inputValue]);
+  const suggests = useSuggestion({
+    step: step,
+    currentValue: currentValue,
+    operators: operators,
+    filters: filters,
+    filterTypes: filterTypes,
+    filterValues: filterValues,
+  });
   return (
     <div>
       <div
