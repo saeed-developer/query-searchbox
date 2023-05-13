@@ -5,7 +5,8 @@ import { TUseSuggestion } from "../types/filter";
 import { TSearchBox } from "../types/searchBox";
 import { ButtonProps } from "./Button";
 import useSuggestion from "../hooks/useSuggestion";
-interface searchBoxProps extends TUseSuggestion, TSearchBox {}
+import Menu, { menuProps } from "./Menu";
+export interface searchBoxProps extends TUseSuggestion, TSearchBox, menuProps {}
 const SearchBox = (props: searchBoxProps) => {
   const {
     backgroundColor,
@@ -14,6 +15,8 @@ const SearchBox = (props: searchBoxProps) => {
     filters,
     filterTypes,
     filterValues,
+    onSelect,
+    menuValues,
   } = props;
   const [step, setStep] = useState<number>(0);
   const [currentValue, setCurrentValue] = useState("");
@@ -43,13 +46,25 @@ const SearchBox = (props: searchBoxProps) => {
         className={styles["searchBoxContainer"]}
       >
         <SearchIcon className={styles["searchBoxContainer-icon"]} />
-        <input
-          type="text"
-          name="search"
-          placeholder={placeHolder}
-          value={inputValue}
-          onChange={(e) => setInpuValue(e.target.value)}
-          className={styles["searchBoxContainer-input"]}
+        <div className={styles["searchBoxContainer-box"]}>
+          <input
+            type="text"
+            name="search"
+            placeholder={placeHolder}
+            value={inputValue}
+            onChange={(e) => setInpuValue(e.target.value)}
+            className={styles["searchBoxContainer-box-input"]}
+          />
+        </div>
+      </div>
+      <div className={styles["searchBoxContainer-box-menu"]}>
+        <Menu
+          menuValues={[
+            "ajslkdjglsdkajgl;dsj",
+            "kldsjgl;adkjsglsdakjg",
+            "lksdajglkasdjglkajds",
+          ]}
+          onSelect={onSelect}
         />
       </div>
     </div>
