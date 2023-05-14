@@ -20,6 +20,8 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
     onClick,
     menuValues,
     onSelect,
+    onStepChange,
+    onInputChange,
   } = props;
   return (
     <div className={styles["container"]}>
@@ -32,6 +34,8 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
         backgroundColor={backgroundColor}
         menuValues={menuValues}
         onSelect={onSelect}
+        onStepChange={onStepChange}
+        onInputChange={onInputChange}
       />
       <Button
         title={title}

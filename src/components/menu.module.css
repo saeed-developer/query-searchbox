@@ -6,3 +6,8 @@
   gap: 8px;
   padding: 4px;
 }
+.container-row:hover {
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+}

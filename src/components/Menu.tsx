@@ -1,7 +1,7 @@
 import styles from "./menu.module.css";
 export interface menuProps {
   menuValues: string[];
-  onSelect: () => void;
+  onSelect: (val: string) => void;
 }
 const Menu = (props: menuProps) => {
   const { menuValues, onSelect } = props;
@@ -9,7 +9,16 @@ const Menu = (props: menuProps) => {
     <div className={styles["container"]}>
       {Array.isArray(menuValues) &&
         menuValues?.map((item) => {
-          return <div onClick={onSelect}>{item}</div>;
+          return (
+            <div
+              className={styles["container-row"]}
+              onClick={() => {
+                onSelect(item);
+              }}
+            >
+              {item}
+            </div>
+          );
         })}
     </div>
   );

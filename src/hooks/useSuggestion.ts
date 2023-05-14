@@ -1,16 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { TUseSuggestion } from "../types/filter";
-function searchArray(value: string, array: string[]): string[] {
-  const matchedItems: string[] = [];
-
-  array.forEach((item) => {
-    if (item.startsWith(value)) {
-      matchedItems.push(item);
-    }
-  });
-
-  return matchedItems;
-}
 
 interface useSuggestionProps extends TUseSuggestion {
   currentValue?: string;
@@ -25,25 +14,21 @@ const useSuggestion = (props: useSuggestionProps) => {
     filterValues = [],
     step,
   } = props;
-
+  console.log({ step });
   const [output, setOutput] = useState<string[]>([]);
   useEffect(() => {
-    let items;
     switch (step) {
       case 1:
-        items = currentValue ? searchArray(currentValue, filters) : filters;
-        setOutput(items);
+        setOutput(filters);
         break;
       case 2:
-        items = currentValue ? searchArray(currentValue, filterTypes) : filters;
-        setOutput(items);
+        setOutput(filterTypes);
         break;
       case 3:
         setOutput(filterValues);
         break;
       case 4:
-        items = currentValue ? searchArray(currentValue, operators) : filters;
-        setOutput(items);
+        setOutput(operators);
         break;
       default:
         break;
