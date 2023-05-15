@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./searchBox.module.css";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { TDetectStep, TUseSuggestion } from "../types/filter";
@@ -51,11 +51,12 @@ const SearchBox = (props: searchBoxProps) => {
   const [step, setStep] = useState<number>(1);
   const [currentValue, setCurrentValue] = useState("");
   const [inputValue, setInpuValue] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const containerStyles = useMemo(() => {
     return { backgroundColor: backgroundColor };
   }, [backgroundColor]);
   useEffect(() => {
-    console.log(inputValue?.slice(-1) === " ", inputValue?.slice(-1));
+    console.log(inputRef?.current?.selectionStart);
     if (inputValue?.slice(-1) === " " || !inputValue.trim()) {
       setCurrentValue("");
       const stepNumber = detectStep({
@@ -88,6 +89,7 @@ const SearchBox = (props: searchBoxProps) => {
         <SearchIcon className={` ${styles["searchBoxContainer-icon"]}`} />
         <div className={styles["searchBoxContainer-box"]}>
           <input
+            ref={inputRef}
             type="text"
             name="search"
             placeholder={placeHolder}
