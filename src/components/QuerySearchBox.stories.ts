@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import QuerySearchBox from "./QuerySearchBox";
+import QuerySearchBox from "./index";
 const meta = {
   title: "Pages/main",
   component: QuerySearchBox,
@@ -9,9 +9,13 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Primary: Story = {
+export const Primary: Story  = {
   args: {
-    primary: true,
-    label: "QuerySearchBox",
+    operators: ['and' , 'or'],
+    filters : ['severity' , 'site'],
+    filterTypes : ['contains' , 'equals'],
+    onClick :(e)=>{console.log('button click ===>' , e)},
+    onStepChange : (e)=>{console.log('step ===>' , e)},
+    filterValues : ['value1' , 'value2']
   },
 };

@@ -5,7 +5,10 @@ import { TDetectStep, TUseSuggestion } from "../types/filter";
 import { TSearchBox } from "../types/searchBox";
 import useSuggestion from "../hooks/useSuggestion";
 import Menu, { menuProps } from "./Menu";
-export interface searchBoxProps extends TUseSuggestion, TSearchBox, menuProps {
+export interface searchBoxProps
+  extends TUseSuggestion,
+    TSearchBox,
+    Partial<menuProps> {
   onStepChange?: (value: number) => void;
   onInputChange?: (value: string) => void;
 }
@@ -63,7 +66,6 @@ const SearchBox = (props: searchBoxProps) => {
       });
       setStep(stepNumber);
     }
-    // setCurrentValue()
   }, [inputValue, filterTypes, filters, operators]);
   useEffect(() => {
     onStepChange && onStepChange(step);

@@ -18,9 +18,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./",
-    "types": ["vite-plugin-svgr/client"]
+    "baseUrl": ".",
+    "paths": {
+      "react-vite-library": [ "src/component/index.tsx" ]
+    },
+    "types": ["vite-plugin-svgr/client"],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/component/index.d.ts"
+    ]
   },
-  "include": ["src"],
+  "include": ["src" ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

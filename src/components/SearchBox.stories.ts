@@ -15,6 +15,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
-    // placeHolder: "search box placeholder",
+    operators: ['and' , 'or'],
+    filters : ['severity' , 'site'],
+    filterTypes : ['contains' , 'equals'],
+    onStepChange : (e)=>{console.log('step ===>' , e)},
+    filterValues : ['value1' , 'value2']
   },
 };
