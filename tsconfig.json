@@ -6,8 +6,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -18,16 +17,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "react-vite-library": [ "src/component/index.tsx" ]
+      "react-vite-library": [ "src/components/index.tsx" ]
     },
     "types": ["vite-plugin-svgr/client"],
     "typeRoots": [
       "node_modules/@types",
-      "src/component/index.d.ts"
+      "src/components/index.d.ts"
     ]
   },
-  "include": ["src" ],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

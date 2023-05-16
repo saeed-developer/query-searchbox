@@ -1,20 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import QuerySearchBox from "./index";
-const meta = {
-  title: "Pages/main",
-  component: QuerySearchBox,
-  tags: ["autodocs"],
-  argTypes: {},
-} satisfies Meta<typeof QuerySearchBox>;
+import SearchBox from "../src/components/SearchBox";
 
+const meta = {
+  title: "components/SearchBox",
+  component: SearchBox,
+  tags: ["docsPage"],
+  argTypes: {
+    placeHolder: {
+      control: { type: "text" },
+    },
+  },
+} satisfies Meta<typeof SearchBox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Primary: Story  = {
+export const Primary: Story = {
   args: {
     operators: ['and' , 'or'],
     filters : ['severity' , 'site'],
     filterTypes : ['contains' , 'equals'],
-    onClick :(e)=>{console.log('button click ===>' , e)},
     onStepChange : (e)=>{console.log('step ===>' , e)},
     filterValues : ['value1' , 'value2']
   },

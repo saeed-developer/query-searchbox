@@ -4,7 +4,6 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import EsLint from 'vite-plugin-linter'
-
 const { EsLinter, linterPlugin } = EsLint
 import * as packageJson from './package.json'
 // https://vitejs.dev/config/
@@ -17,15 +16,15 @@ export default defineConfig((configEnv) => ({
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
-      include: ['src/component/'],
+      include: ['src/components/'],
     }),
     svgr()
   ],
   build: {
     lib: {
-      entry: resolve('src', 'component/index.tsx'),
+      entry: resolve('src', 'components/index.tsx'),
       name: 'Query-SearchBox',
-      formats: ['es', 'umd'],
+      formats: ["es", "cjs"],
       fileName: (format) => `Query-SearchBox.${format}.js`,
     },
     rollupOptions: {
