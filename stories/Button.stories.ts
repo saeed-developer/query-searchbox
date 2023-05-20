@@ -13,6 +13,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
-  title : 'Search'
+    title: "Search",
   },
 };

@@ -15,10 +15,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
-    operators: ['and' , 'or'],
-    filters : ['severity' , 'site'],
-    filterTypes : ['contains' , 'equals'],
-    onStepChange : (e)=>{console.log('step ===>' , e)},
-    filterValues : ['value1' , 'value2']
+    operators: ["and", "or"],
+    filters: ["severity", "site"],
+    filterTypes: ["contains", "equals"],
+    onStepChange: (e) => {
+      console.log("step ===>", e);
+    },
+    filterValues: ["value1", "value2"],
+    onCurrentValue: (e) => {
+      console.log("currentValue ===>", e);
+    },
   },
 };

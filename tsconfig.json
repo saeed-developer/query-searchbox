@@ -19,13 +19,10 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
     "paths": {
-      "react-vite-library": [ "src/components/index.tsx" ]
+      "react-vite-library": ["src/components/index.tsx"]
     },
     "types": ["vite-plugin-svgr/client"],
-    "typeRoots": [
-      "node_modules/@types",
-      "src/components/index.d.ts"
-    ]
+    "typeRoots": ["node_modules/@types", "src/components/index.d.ts"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

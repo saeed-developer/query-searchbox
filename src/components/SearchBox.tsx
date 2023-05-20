@@ -11,6 +11,7 @@ export interface searchBoxProps
     Partial<menuProps> {
   onStepChange?: (value: number) => void;
   onInputChange?: (value: string) => void;
+  onCurrentValue?: (value: string) => void;
 }
 function detectStep({
   operators,
@@ -46,6 +47,7 @@ const SearchBox = (props: searchBoxProps) => {
     onSelect,
     onStepChange,
     onInputChange,
+    onCurrentValue,
   } = props;
 
   const [step, setStep] = useState<number>(1);
@@ -71,6 +73,9 @@ const SearchBox = (props: searchBoxProps) => {
   useEffect(() => {
     onStepChange && onStepChange(step);
   }, [step, onStepChange]);
+  useEffect(() => {
+    onCurrentValue && onCurrentValue(currentValue);
+  }, [currentValue, onCurrentValue]);
   const suggests = useSuggestion({
     step: step,
     currentValue: currentValue,
