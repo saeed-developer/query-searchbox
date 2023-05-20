@@ -22,7 +22,7 @@ export const Primary: Story = {
       console.log("step ===>", e);
     },
     filterValues: ["value1", "value2"],
-    onCurrentValue: (e) => {
+    onCurrentChange: (e) => {
       console.log("currentValue ===>", e);
     },
   },

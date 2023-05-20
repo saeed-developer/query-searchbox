@@ -22,6 +22,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
     onSelect,
     onStepChange,
     onInputChange,
+    onCurrentChange,
   } = props;
   return (
     <div className={styles["container"]}>
@@ -36,6 +37,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
         onSelect={onSelect}
         onStepChange={onStepChange}
         onInputChange={onInputChange}
+        onCurrentChange={onCurrentChange}
       />
       <Button
         title={title}
