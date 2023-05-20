@@ -12,6 +12,7 @@ export interface searchBoxProps
   onStepChange?: (value: number) => void;
   onInputChange?: (value: string) => void;
   onCurrentChange?: (value: string) => void;
+  localSearchOnSteps?: number[];
 }
 function detectStep({
   operators,
@@ -48,11 +49,13 @@ const SearchBox = (props: searchBoxProps) => {
     onStepChange,
     onInputChange,
     onCurrentChange,
+    localSearchOnSteps,
   } = props;
 
   const [step, setStep] = useState<number>(1);
   const [currentValue, setCurrentValue] = useState("");
   const [inputValue, setInpuValue] = useState<string>("");
+  const [filtredSuggestion, setFiltredSuggestion] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const containerStyles = useMemo(() => {
     return { backgroundColor: backgroundColor };
@@ -74,7 +77,6 @@ const SearchBox = (props: searchBoxProps) => {
     onStepChange && onStepChange(step);
   }, [step, onStepChange]);
   useEffect(() => {
-    console.log(onCurrentChange);
     onCurrentChange && onCurrentChange(currentValue);
   }, [currentValue, onCurrentChange]);
   const suggests = useSuggestion({
@@ -85,7 +87,15 @@ const SearchBox = (props: searchBoxProps) => {
     filterTypes: filterTypes,
     filterValues: filterValues,
   });
-  console.log({ suggests });
+
+  useEffect(() => {
+    if (localSearchOnSteps?.includes(step)) {
+      const filtredSuggestion = suggests?.filter((item) =>
+        item?.startsWith(currentValue)
+      );
+      setFiltredSuggestion(filtredSuggestion);
+    }
+  }, [step, currentValue, localSearchOnSteps, suggests]);
   return (
     <div>
       <div
@@ -112,7 +122,9 @@ const SearchBox = (props: searchBoxProps) => {
       </div>
       <div className={styles["searchBoxContainer-box-menu"]}>
         <Menu
-          menuValues={suggests}
+          menuValues={
+            filtredSuggestion?.length > 0 ? filtredSuggestion : suggests
+          }
           onSelect={(value) => {
             setInpuValue(inputValue + value + " ");
             onSelect && onSelect(value);

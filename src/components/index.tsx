@@ -23,6 +23,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
     onStepChange,
     onInputChange,
     onCurrentChange,
+    localSearchOnSteps,
   } = props;
   return (
     <div className={styles["container"]}>
@@ -38,6 +39,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
         onStepChange={onStepChange}
         onInputChange={onInputChange}
         onCurrentChange={onCurrentChange}
+        localSearchOnSteps={localSearchOnSteps}
       />
       <Button
         title={title}
