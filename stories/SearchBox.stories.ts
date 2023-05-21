@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     operators: ["and", "or"],
-    filters: ["severity", "site" , "siteLoc"],
+    filters: ["severity", "site", "siteLoc"],
     filterTypes: ["contains", "equals"],
     onStepChange: (e) => {
       console.log("step ===>", e);
@@ -25,7 +25,6 @@ export const Primary: Story = {
     onCurrentChange: (e) => {
       console.log("currentValue ===>", e);
     },
-    localSearchOnSteps : [1]
-
+    localSearchOnSteps: [1],
   },
 };
