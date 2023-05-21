@@ -5,6 +5,7 @@ import { TDetectStep, TUseSuggestion } from "../types/filter";
 import { TSearchBox } from "../types/searchBox";
 import useSuggestion from "../hooks/useSuggestion";
 import Menu, { menuProps } from "./Menu";
+import { useFocusedElement } from "../hooks/useFocusedElement";
 export interface searchBoxProps
   extends TUseSuggestion,
     TSearchBox,
@@ -56,11 +57,21 @@ const SearchBox = (props: searchBoxProps) => {
   const [inputValue, setInpuValue] = useState<string>("");
   const [filtredSuggestion, setFiltredSuggestion] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const suggests = useSuggestion({
+    step: step,
+    currentValue: currentValue,
+    operators: operators,
+    filters: filters,
+    filterTypes: filterTypes,
+    filterValues: filterValues,
+  });
+  const isInputFocuded = useFocusedElement({
+    element: inputRef.current as HTMLInputElement,
+  });
   const containerStyles = useMemo(() => {
     return { backgroundColor: backgroundColor };
   }, [backgroundColor]);
   useEffect(() => {
-    console.log(inputRef?.current?.selectionStart);
     if (inputValue?.slice(-1) === " " || !inputValue.trim()) {
       setCurrentValue("");
       const stepNumber = detectStep({
@@ -78,15 +89,6 @@ const SearchBox = (props: searchBoxProps) => {
   useEffect(() => {
     onCurrentChange && onCurrentChange(currentValue);
   }, [currentValue, onCurrentChange]);
-  const suggests = useSuggestion({
-    step: step,
-    currentValue: currentValue,
-    operators: operators,
-    filters: filters,
-    filterTypes: filterTypes,
-    filterValues: filterValues,
-  });
-
   useEffect(() => {
     if (localSearchOnSteps?.includes(step)) {
       const filtredSuggestion = suggests?.filter((item) =>
@@ -99,6 +101,7 @@ const SearchBox = (props: searchBoxProps) => {
     setFiltredSuggestion([]);
   }, [step]);
   const handleSelect = (value: string) => {
+    inputRef.current?.focus();
     const arrInput = inputValue.split(" ");
     arrInput.pop();
     setInpuValue((arrInput.join("") + " " + value + " ").trimStart());
@@ -113,6 +116,7 @@ const SearchBox = (props: searchBoxProps) => {
         <SearchIcon className={` ${styles["searchBoxContainer-icon"]}`} />
         <div className={styles["searchBoxContainer-box"]}>
           <input
+            autoComplete="off"
             ref={inputRef}
             type="text"
             name="search"
@@ -134,6 +138,7 @@ const SearchBox = (props: searchBoxProps) => {
             filtredSuggestion?.length > 0 ? filtredSuggestion : suggests
           }
           onSelect={handleSelect}
+          isOpen={isInputFocuded as boolean}
         />
       </div>
     </div>
