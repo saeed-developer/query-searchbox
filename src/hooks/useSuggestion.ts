@@ -14,7 +14,6 @@ const useSuggestion = (props: useSuggestionProps) => {
     filterValues = [],
     step,
   } = props;
-  console.log({ step });
   const [output, setOutput] = useState<string[]>([]);
   useEffect(() => {
     switch (step) {

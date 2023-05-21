@@ -51,7 +51,6 @@ const SearchBox = (props: searchBoxProps) => {
     onCurrentChange,
     localSearchOnSteps,
   } = props;
-
   const [step, setStep] = useState<number>(1);
   const [currentValue, setCurrentValue] = useState("");
   const [inputValue, setInpuValue] = useState<string>("");
@@ -96,6 +95,15 @@ const SearchBox = (props: searchBoxProps) => {
       setFiltredSuggestion(filtredSuggestion);
     }
   }, [step, currentValue, localSearchOnSteps, suggests]);
+  useEffect(() => {
+    setFiltredSuggestion([]);
+  }, [step]);
+  const handleSelect = (value: string) => {
+    const arrInput = inputValue.split(" ");
+    arrInput.pop();
+    setInpuValue((arrInput.join("") + " " + value + " ").trimStart());
+    onSelect && onSelect(value);
+  };
   return (
     <div>
       <div
@@ -125,10 +133,7 @@ const SearchBox = (props: searchBoxProps) => {
           menuValues={
             filtredSuggestion?.length > 0 ? filtredSuggestion : suggests
           }
-          onSelect={(value) => {
-            setInpuValue(inputValue + value + " ");
-            onSelect && onSelect(value);
-          }}
+          onSelect={handleSelect}
         />
       </div>
     </div>
