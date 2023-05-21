@@ -1,8 +1,8 @@
 import Button, { ButtonProps } from "./Button";
 import SearchBox, { searchBoxProps } from "./SearchBox";
 import styles from "./querySearchBox.module.css";
+import "./global.css";
 interface querySearchBoxProps extends searchBoxProps, ButtonProps {}
-
 const QuerySearchBox = (props: querySearchBoxProps) => {
   const {
     operators,
@@ -24,6 +24,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
     onInputChange,
     onCurrentChange,
     localSearchOnSteps,
+    menuLoading,
   } = props;
   return (
     <div className={styles["container"]}>
@@ -40,6 +41,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
         onInputChange={onInputChange}
         onCurrentChange={onCurrentChange}
         localSearchOnSteps={localSearchOnSteps}
+        menuLoading={menuLoading}
       />
       <Button
         title={title}

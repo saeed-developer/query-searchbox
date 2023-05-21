@@ -4,9 +4,10 @@ export interface menuProps {
   menuValues: string[];
   onSelect: (val: string) => void;
   isOpen: boolean;
+  menuLoading?: boolean;
 }
 const Menu = (props: menuProps) => {
-  const { menuValues, onSelect, isOpen = false } = props;
+  const { menuValues, onSelect, isOpen = false, menuLoading = false } = props;
   const ref = useRef<HTMLDivElement | null>(null);
   return (
     <div
@@ -14,7 +15,9 @@ const Menu = (props: menuProps) => {
       style={{ display: isOpen ? "block" : "none" }}
       className={styles["container"]}
     >
+      {menuLoading && <div className="spinner" />}
       {Array.isArray(menuValues) &&
+        !menuLoading &&
         menuValues?.map((item) => {
           return (
             <div

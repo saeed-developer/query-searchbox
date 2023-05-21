@@ -51,6 +51,7 @@ const SearchBox = (props: searchBoxProps) => {
     onInputChange,
     onCurrentChange,
     localSearchOnSteps,
+    menuLoading,
   } = props;
   const [step, setStep] = useState<number>(1);
   const [currentValue, setCurrentValue] = useState("");
@@ -72,13 +73,17 @@ const SearchBox = (props: searchBoxProps) => {
     return { backgroundColor: backgroundColor };
   }, [backgroundColor]);
   useEffect(() => {
-    if (inputValue?.slice(-1) === " " || !inputValue.trim()) {
+    const slicedInput = inputValue.slice(
+      0,
+      inputRef?.current?.selectionStart as number
+    );
+    if (slicedInput?.slice(-1) === " " || !slicedInput.trim()) {
       setCurrentValue("");
       const stepNumber = detectStep({
         operators,
         filters,
         filterTypes,
-        inputValue,
+        inputValue: slicedInput,
       });
       setStep(stepNumber);
     }
@@ -139,6 +144,7 @@ const SearchBox = (props: searchBoxProps) => {
           }
           onSelect={handleSelect}
           isOpen={isInputFocuded as boolean}
+          menuLoading={menuLoading}
         />
       </div>
     </div>
