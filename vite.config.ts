@@ -7,34 +7,34 @@ import EsLint from "vite-plugin-linter";
 const { EsLinter, linterPlugin } = EsLint;
 import * as packageJson from "./package.json";
 import removeConsole from "vite-plugin-remove-console";
-import sassDts from "vite-plugin-sass-dts";
-
+import typescript from "@rollup/plugin-typescript";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 // https://vitejs.dev/config/
 export default defineConfig((configEnv) => ({
   plugins: [
     react(),
+    cssInjectedByJsPlugin(),
     removeConsole(),
-    sassDts({
-      enabledMode: ["development", "production"],
- 
-      outputDir: resolve("src" , "./dist"),
-    }),
     linterPlugin({
       include: ["./src}/**/*.{ts,tsx}"],
       linters: [new EsLinter({ configEnv })],
     }),
-    dts({
-      include: ["src/components/"],
-      outputDir: "dist/",
-    }),
     svgr(),
+    typescript({
+      sourceMap: false,
+      declaration: true,
+      outDir: "dist",
+    }),
   ],
   build: {
+    manifest: true,
+    minify: true,
+    reportCompressedSize: true,
     lib: {
       entry: resolve("src", "components/index.tsx"),
-      name: "Query-SearchBox",
+      name: "main",
       formats: ["es", "cjs"],
-      fileName: (format) => `Query-SearchBox.${format}.js`,
+      // fileName: (format) => `Query-SearchBox.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
