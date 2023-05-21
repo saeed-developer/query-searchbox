@@ -7,18 +7,25 @@ import EsLint from "vite-plugin-linter";
 const { EsLinter, linterPlugin } = EsLint;
 import * as packageJson from "./package.json";
 import removeConsole from "vite-plugin-remove-console";
+import sassDts from "vite-plugin-sass-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv) => ({
   plugins: [
     react(),
     removeConsole(),
+    sassDts({
+      enabledMode: ["development", "production"],
+ 
+      outputDir: resolve("src" , "./dist"),
+    }),
     linterPlugin({
       include: ["./src}/**/*.{ts,tsx}"],
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
       include: ["src/components/"],
+      outputDir: "dist/",
     }),
     svgr(),
   ],
@@ -31,9 +38,6 @@ export default defineConfig((configEnv) => ({
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
-    },
-    esbuild: {
-      drop: [],
     },
   },
 }));
