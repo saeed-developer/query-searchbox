@@ -1,12 +1,11 @@
 .container {
   width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
   padding: 8px 0px 0px;
   margin-top: -3px;
   min-width: 200px;
-  max-height: 120px;
+  max-height: 0px;
   border-radius: 0px 0px 5px 5px;
   overflow: auto;
   background-color: #ffff;
@@ -15,6 +14,30 @@
   position: absolute;
   box-shadow: 1px 1px 5px gray;
 }
+.isOpen {
+  animation: openAnimation  linear 0.5s forwards;
+}
+.isClose {
+  animation: closeAnimation  linear 0.5s forwards;
+}
+@keyframes openAnimation  {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 120px;
+  }
+}
+@keyframes closeAnimation  {
+  from {
+    max-height: 120px;
+  }
+  to {
+    max-height: 0px;
+    opacity: 0;
+  }
+}
+
 .container::-webkit-scrollbar {
   margin: 5px !important;
   width: 5px;
