@@ -109,7 +109,7 @@ const SearchBox = (props: searchBoxProps) => {
     inputRef.current?.focus();
     const arrInput = inputValue.split(" ");
     arrInput.pop();
-    setInpuValue((arrInput.join("") + " " + value + " ").trimStart());
+    setInpuValue((arrInput.join(" ") + " " + value + " ").trimStart());
     onSelect && onSelect(value);
   };
   return (
