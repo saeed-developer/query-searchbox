@@ -1,14 +1,16 @@
 .searchBoxContainer {
   width: 100%;
-  height: 25px;
-  background-color: rgb(245, 242, 242);
+  height: 30px;
+  background-color: #fff;
   font-size: 14;
   display: flex;
+  gap: 5px;
   align-items: center;
-  border: 1px solid black;
+  box-shadow: 1px 1px 5px gray;
   border-radius: 5px;
 }
 .searchBoxContainer-box {
+  width: 100%;
   position: relative;
 }
 .searchBoxContainer-box-input {
@@ -17,7 +19,7 @@
   width: 100%;
   border: none;
   background: inherit;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .searchBoxContainer-box-input:focus {
   outline: none;
@@ -28,10 +30,6 @@
   height: 16px;
 }
 .searchBoxContainer-box-menu {
-  margin-top: 2px;
-  width: 200px;
-  min-width: 200px;
-  border-radius: 5px;
-  background-color: aqua;
-  font-size: 14px;
+  width: 100% !important;
+  position: relative;
 }

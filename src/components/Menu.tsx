@@ -12,8 +12,10 @@ const Menu = (props: menuProps) => {
   return (
     <div
       ref={ref}
-      style={{ display: isOpen ? "block" : "none" }}
-      className={styles["container"]}
+      // style={{ display: isOpen ? "block" : "none" }}
+      className={`${styles["container"]} ${
+        isOpen ? styles["isOpen"] : styles["isClose"]
+      }`}
     >
       {menuLoading && <div className="spinner" />}
       {Array.isArray(menuValues) &&

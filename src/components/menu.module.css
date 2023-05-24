@@ -1,13 +1,62 @@
 .container {
   width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 4px;
+  padding: 8px 0px 0px;
+  margin-top: -3px;
+  min-width: 200px;
+  max-height: 0px;
+  border-radius: 0px 0px 5px 5px;
+  overflow: auto;
+  background-color: #ffff;
+  font-size: 14px;
+  z-index: -1;
+  position: absolute;
+  box-shadow: 1px 1px 5px gray;
+}
+.isOpen {
+  animation: openAnimation  linear 0.5s forwards;
+}
+.isClose {
+  animation: closeAnimation  linear 0.5s forwards;
+}
+@keyframes openAnimation  {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 120px;
+  }
+}
+@keyframes closeAnimation  {
+  from {
+    max-height: 120px;
+  }
+  to {
+    max-height: 0px;
+    opacity: 0;
+  }
+}
+
+.container::-webkit-scrollbar {
+  margin: 5px !important;
+  width: 5px;
+}
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+  margin: 5px 0px;
+  border-radius: 3px;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 3px;
+}
+.container-row {
+  padding: 4px 9px;
 }
 .container-row:hover {
   cursor: pointer;
-  width: 100%;
   opacity: 0.8;
+  background-color: rgba(128, 128, 128, 0.233);
+  /* border-radius: 4px; */
 }
