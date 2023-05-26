@@ -10,14 +10,18 @@ const QuerySearchBox = memo((props: querySearchBoxProps) => {
     filters,
     filterTypes,
     filterValues,
-    placeHolder,
-    backgroundColor,
-    title,
-    color,
-    background,
-    height,
-    width,
-    fontSize,
+    inputPlaceHolder,
+    inputBackgroundColor,
+    inputWidth,
+    inputHeight,
+    inputFontSize,
+    inputColor,
+    buttonTitle,
+    buttonTitleColor,
+    buttonbackgroundColor,
+    buttonHeight,
+    buttonWidth,
+    buttonFontSize,
     onClick,
     menuValues,
     onSelect,
@@ -35,8 +39,8 @@ const QuerySearchBox = memo((props: querySearchBoxProps) => {
         filters={filters}
         filterTypes={filterTypes}
         filterValues={filterValues}
-        placeHolder={placeHolder}
-        backgroundColor={backgroundColor}
+        inputPlaceHolder={inputPlaceHolder}
+        inputBackgroundColor={inputBackgroundColor}
         menuValues={menuValues}
         onSelect={onSelect}
         onStepChange={onStepChange}
@@ -46,14 +50,18 @@ const QuerySearchBox = memo((props: querySearchBoxProps) => {
         menuLoading={menuLoading}
         inputValue = {inputValue}
         setInpuValue = {setInpuValue}
+        inputColor = {inputColor}
+        inputWidth = {inputWidth}
+        inputHeight = {inputHeight}
+        inputFontSize = {inputFontSize}
       />
       <Button
-        title={title}
-        color={color}
-        background={background}
-        height={height}
-        width={width}
-        fontSize={fontSize}
+        buttonTitle={buttonTitle}
+        buttonTitleColor={buttonTitleColor}
+        buttonbackgroundColor={buttonbackgroundColor}
+        buttonHeight={buttonHeight}
+        buttonWidth={buttonWidth}
+        buttonFontSize={buttonFontSize}
         onClick={onClick}
         onClickValue={inputValue}
       />

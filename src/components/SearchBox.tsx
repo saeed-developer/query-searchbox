@@ -40,8 +40,12 @@ function detectStep({
 }
 const SearchBox = (props: searchBoxProps) => {
   const {
-    backgroundColor,
-    placeHolder = "search",
+    inputColor ,
+    inputWidth,
+    inputBackgroundColor,
+    inputHeight,
+    inputFontSize,
+    inputPlaceHolder = "search",
     operators,
     filters,
     filterTypes,
@@ -71,10 +75,10 @@ const SearchBox = (props: searchBoxProps) => {
     element: inputRef.current as HTMLInputElement,
   });
   const containerStyles = useMemo(() => {
-    return { backgroundColor: backgroundColor };
-  }, [backgroundColor]);
+    return { backgroundColor: inputBackgroundColor,width : inputWidth , height : inputHeight , fontSize : inputFontSize,color : inputColor ,  };
+  }, [inputBackgroundColor , inputColor , inputWidth , inputHeight , inputFontSize]);
   useEffect(() => {
-    const slicedInput = inputValue.slice(
+    const slicedInput = inputValue?.slice(
       0,
       inputRef?.current?.selectionStart as number
     );
@@ -115,7 +119,7 @@ const SearchBox = (props: searchBoxProps) => {
   };
   const handleInputChange  = (e : React.ChangeEvent<HTMLInputElement>) : void =>{
     setInpuValue(e.target.value);
-    setCurrentValue((value) => value + e.target.value.slice(-1));
+    setCurrentValue((value) => value + e.target.value?.slice(-1));
     onInputChange && onInputChange(e.target.value);
   }
   return (
@@ -131,7 +135,7 @@ const SearchBox = (props: searchBoxProps) => {
             ref={inputRef}
             type="text"
             name="search"
-            placeholder={placeHolder}
+            placeholder={inputPlaceHolder}
             value={inputValue}
             onChange={handleInputChange}
             className={styles["searchBoxContainer-box-input"]}

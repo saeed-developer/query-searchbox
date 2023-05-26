@@ -1,27 +1,27 @@
 import { useMemo } from "react";
 import styles from "./button.module.css";
 export interface ButtonProps {
-  title?: string;
-  color?: string;
-  background?: string;
-  height?: string;
-  width?: string;
-  fontSize?: string;
+  buttonTitle?: string;
+  buttonTitleColor?: string;
+  buttonbackgroundColor?: string;
+  buttonHeight?: string;
+  buttonWidth?: string;
+  buttonFontSize?: string;
   onClick: (arg : unknown) => void;
   onClickValue? : unknown
 }
 const Button = (props: ButtonProps) => {
-  const { title, color, background, height, width, fontSize, onClick , onClickValue } = props;
+  const { buttonTitle, buttonTitleColor, buttonbackgroundColor, buttonHeight, buttonWidth, buttonFontSize, onClick , onClickValue } = props;
   const buttonStyles = useMemo(() => {
-    return { color, background, height, width, fontSize };
-  }, [color, background, height, width, fontSize]);
+    return { color : buttonTitleColor, background :  buttonbackgroundColor, height :  buttonHeight, width : buttonWidth, fontSize : buttonFontSize };
+  }, [buttonTitleColor, buttonbackgroundColor, buttonHeight,buttonWidth, buttonFontSize]);
   return (
     <button
       onClick={()=>onClick(onClickValue)}
       style={{ ...buttonStyles }}
       className={styles["button"]}
     >
-      {title || "Search"}
+      {buttonTitle || "Search"}
     </button>
   );
 };

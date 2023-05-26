@@ -13,7 +13,7 @@ steps are:
 ## Props
  
 
-Required props : 
+### Required props : 
 
    - `filters` - is an array of all the filters you want to search based on. For exapmle : ["province" , "country"]
    - `filterTypes` - is an array that contains all the types of filters you want to search based on. For example: ["=", "!=", "contains"]
@@ -21,7 +21,28 @@ Required props :
    - `operators` - is an array of all operators to combine multiple filters together . For example: ["AND" , "OR"]
    - `onClick` - a function that is called whenever the user clicks on the search button and will return the input value .
 
-Optional props : 
+### Optional props : 
+
+
+#### button props :
+
+   - `buttonTitle`
+   - `buttonTitleColor`
+   - `buttonbackgroundColor`
+   - `buttonHeight`
+   - `buttonWidth`
+   - `buttonFontSize`
+
+#### input props :
+
+   - `inputPlaceHolder`
+   - `inputBackgroundColor`
+   - `inputWidth`
+   - `inputHeight`
+   - `inputFontSize`
+   - `inputColor`
+   
+   #### other props :    
 
    - `localSearchOnSteps` - if you want to perform a local search on each step, pass the steps as an array of numbers, such as [1 , 3].
    - `menuValues` - an array of strings, where each string represents one row in the menu. For example: ['value1', 'value2'].
@@ -30,6 +51,7 @@ Optional props :
    - `onStepChange` - a function that subscribes to step changes. 
    - `onInputChange` - a function that subscribes to input changes.
    - `onCurrentChange` - a function that subscribes to changes in the current value within that step
+
 
 
    
