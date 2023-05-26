@@ -14,12 +14,9 @@
   position: relative;
 }
 .searchBoxContainer-box-input {
-  /* width: 100%;
-    height: 100%; */
   width: 100%;
   border: none;
   background: inherit;
-  /* overflow: hidden; */
 }
 .searchBoxContainer-box-input:focus {
   outline: none;

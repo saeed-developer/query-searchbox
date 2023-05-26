@@ -7,16 +7,17 @@ export interface ButtonProps {
   height?: string;
   width?: string;
   fontSize?: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (arg : unknown) => void;
+  onClickValue? : unknown
 }
 const Button = (props: ButtonProps) => {
-  const { title, color, background, height, width, fontSize, onClick } = props;
+  const { title, color, background, height, width, fontSize, onClick , onClickValue } = props;
   const buttonStyles = useMemo(() => {
     return { color, background, height, width, fontSize };
   }, [color, background, height, width, fontSize]);
   return (
     <button
-      onClick={onClick}
+      onClick={()=>onClick(onClickValue)}
       style={{ ...buttonStyles }}
       className={styles["button"]}
     >

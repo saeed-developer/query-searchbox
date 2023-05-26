@@ -52,10 +52,11 @@ const SearchBox = (props: searchBoxProps) => {
     onCurrentChange,
     localSearchOnSteps,
     menuLoading,
+    inputValue,
+    setInpuValue
   } = props;
   const [step, setStep] = useState<number>(1);
   const [currentValue, setCurrentValue] = useState("");
-  const [inputValue, setInpuValue] = useState<string>("");
   const [filtredSuggestion, setFiltredSuggestion] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const suggests = useSuggestion({
@@ -112,6 +113,11 @@ const SearchBox = (props: searchBoxProps) => {
     setInpuValue((arrInput.join(" ") + " " + value + " ").trimStart());
     onSelect && onSelect(value);
   };
+  const handleInputChange  = (e : React.ChangeEvent<HTMLInputElement>) : void =>{
+    setInpuValue(e.target.value);
+    setCurrentValue((value) => value + e.target.value.slice(-1));
+    onInputChange && onInputChange(e.target.value);
+  }
   return (
     <div>
       <div
@@ -127,12 +133,7 @@ const SearchBox = (props: searchBoxProps) => {
             name="search"
             placeholder={placeHolder}
             value={inputValue}
-            onChange={(e) => {
-              setInpuValue(e.target.value);
-              console.log(e.target.value.slice(-1));
-              setCurrentValue((value) => value + e.target.value.slice(-1));
-              onInputChange && onInputChange(e.target.value);
-            }}
+            onChange={handleInputChange}
             className={styles["searchBoxContainer-box-input"]}
           />
         </div>

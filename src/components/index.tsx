@@ -2,8 +2,9 @@ import Button, { ButtonProps } from "./Button";
 import SearchBox, { searchBoxProps } from "./SearchBox";
 import styles from "./querySearchBox.module.css";
 import "./global.css";
-interface querySearchBoxProps extends searchBoxProps, ButtonProps {}
-const QuerySearchBox = (props: querySearchBoxProps) => {
+import { memo, useState } from "react";
+interface querySearchBoxProps extends Omit<searchBoxProps , 'inputValue' | 'setInputValue'> , ButtonProps {}
+const QuerySearchBox = memo((props: querySearchBoxProps) => {
   const {
     operators,
     filters,
@@ -26,6 +27,7 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
     localSearchOnSteps,
     menuLoading,
   } = props;
+  const [inputValue, setInpuValue] = useState<string>("");
   return (
     <div className={styles["container"]}>
       <SearchBox
@@ -42,6 +44,8 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
         onCurrentChange={onCurrentChange}
         localSearchOnSteps={localSearchOnSteps}
         menuLoading={menuLoading}
+        inputValue = {inputValue}
+        setInpuValue = {setInpuValue}
       />
       <Button
         title={title}
@@ -51,9 +55,10 @@ const QuerySearchBox = (props: querySearchBoxProps) => {
         width={width}
         fontSize={fontSize}
         onClick={onClick}
+        onClickValue={inputValue}
       />
     </div>
   );
-};
+})
 
-export default QuerySearchBox;
+export default QuerySearchBox
