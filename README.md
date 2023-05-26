@@ -12,7 +12,8 @@ steps are:
 1- filters   2- filterTypes   3- filterValues   4- operators
 ## Props
  
-Here are the necessary props that you should pass to 'query-searchbox'.
+
+Required props : 
 
    - `filters` - is an array of all the filters you want to search based on. For exapmle : ["province" , "country"]
    - `filterTypes` - is an array that contains all the types of filters you want to search based on. For example: ["=", "!=", "contains"]
@@ -20,7 +21,8 @@ Here are the necessary props that you should pass to 'query-searchbox'.
    - `operators` - is an array of all operators to combine multiple filters together . For example: ["AND" , "OR"]
    - `onClick` - a function that is called whenever the user clicks on the search button and will return the input value .
 
-Optional props
+Optional props : 
+
    - `localSearchOnSteps` - if you want to perform a local search on each step, pass the steps as an array of numbers, such as [1 , 3].
    - `menuValues` - an array of strings, where each string represents one row in the menu. For example: ['value1', 'value2'].
    - `menuLoading` - Show a loading spinner in the dropdown menu. The default value is false.
