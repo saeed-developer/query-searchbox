@@ -40,7 +40,7 @@ function detectStep({
 }
 const SearchBox = (props: searchBoxProps) => {
   const {
-    inputColor ,
+    inputColor,
     inputWidth,
     inputBackgroundColor,
     inputHeight,
@@ -57,7 +57,7 @@ const SearchBox = (props: searchBoxProps) => {
     localSearchOnSteps,
     menuLoading,
     inputValue,
-    setInpuValue
+    setInpuValue,
   } = props;
   const [step, setStep] = useState<number>(1);
   const [currentValue, setCurrentValue] = useState("");
@@ -75,8 +75,20 @@ const SearchBox = (props: searchBoxProps) => {
     element: inputRef.current as HTMLInputElement,
   });
   const containerStyles = useMemo(() => {
-    return { backgroundColor: inputBackgroundColor,width : inputWidth , height : inputHeight , fontSize : inputFontSize,color : inputColor ,  };
-  }, [inputBackgroundColor , inputColor , inputWidth , inputHeight , inputFontSize]);
+    return {
+      backgroundColor: inputBackgroundColor,
+      width: inputWidth,
+      height: inputHeight,
+      fontSize: inputFontSize,
+      color: inputColor,
+    };
+  }, [
+    inputBackgroundColor,
+    inputColor,
+    inputWidth,
+    inputHeight,
+    inputFontSize,
+  ]);
   useEffect(() => {
     const slicedInput = inputValue?.slice(
       0,
@@ -117,11 +129,11 @@ const SearchBox = (props: searchBoxProps) => {
     setInpuValue((arrInput.join(" ") + " " + value + " ").trimStart());
     onSelect && onSelect(value);
   };
-  const handleInputChange  = (e : React.ChangeEvent<HTMLInputElement>) : void =>{
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInpuValue(e.target.value);
     setCurrentValue((value) => value + e.target.value?.slice(-1));
     onInputChange && onInputChange(e.target.value);
-  }
+  };
   return (
     <div>
       <div

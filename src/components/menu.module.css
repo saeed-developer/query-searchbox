@@ -15,12 +15,12 @@
   box-shadow: 1px 1px 5px gray;
 }
 .isOpen {
-  animation: openAnimation  linear 0.5s forwards;
+  animation: openAnimation linear 0.5s forwards;
 }
 .isClose {
-  animation: closeAnimation  linear 0.5s forwards;
+  animation: closeAnimation linear 0.5s forwards;
 }
-@keyframes openAnimation  {
+@keyframes openAnimation {
   from {
     max-height: 0px;
   }
@@ -28,7 +28,7 @@
     max-height: 120px;
   }
 }
-@keyframes closeAnimation  {
+@keyframes closeAnimation {
   from {
     max-height: 120px;
   }

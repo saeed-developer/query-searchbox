@@ -5,8 +5,9 @@ Query-searchbox helps you develop powerful query-like searches and get the resul
 
 Query-searchbox is highly flexible and customizable, offering numerous props and methods to control the query and customize the style
 
-How this package works Works?
-This package detects the user's step based on the inputValue and displays the corresponding value in the menu based on the detected step.
+How this package works ?
+
+This package detects the user step based on the inputValue and displays the corresponding items in the menu.
 steps are:
 
 1- filters   2- filterTypes   3- filterValues   4- operators
