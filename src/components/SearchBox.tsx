@@ -127,6 +127,7 @@ const SearchBox = (props: searchBoxProps) => {
     const arrInput = inputValue.split(" ");
     arrInput.pop();
     setInpuValue((arrInput.join(" ") + " " + value + " ").trimStart());
+    onInputChange && onInputChange((arrInput.join(" ") + " " + value + " ").trimStart())
     onSelect && onSelect(value);
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {

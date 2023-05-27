@@ -24,5 +24,8 @@ export const Primary: Story = {
     onCurrentChange: (e) => {
       console.log("currentValue ===>", e);
     },
+    onInputChange(value) {
+      console.log("inputValue ===>", value)
+    },
   },
 };
