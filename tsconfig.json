@@ -2,24 +2,22 @@
   "compilerOptions": {
     "target": "ESNext",
     "allowSyntheticDefaultImports": true,
-
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
+    "noUncheckedIndexedAccess": true,
     "paths": {
       "react-vite-library": ["src/components/index.tsx"]
     },
@@ -27,5 +25,9 @@
     "typeRoots": ["node_modules/@types", "src/components/index.d.ts"]
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

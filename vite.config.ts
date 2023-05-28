@@ -28,13 +28,13 @@ export default defineConfig((configEnv) => ({
   ],
   build: {
     manifest: true,
-    minify: true,
+    minify: "terser",
     reportCompressedSize: true,
     lib: {
       entry: resolve("src", "components/index.tsx"),
       name: "main",
-      formats: ["es", "cjs"],
-      // fileName: (format) => `Query-SearchBox.${format}.js`,
+      formats: ["umd", "es"],
+      fileName: (format) => `Query-SearchBox.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],

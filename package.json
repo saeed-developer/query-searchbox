@@ -1,17 +1,13 @@
 {
   "name": "query-searchbox",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/react-component-library.cjs",
-      "import": "./dist/react-component-library.es.js"
-    },
-    "./styles.css": {
-      "require": "./dist/styles.css",
-      "default": "./dist/styles.css"
+      "require": "./dist/Query-SearchBox.umd.js",
+      "import": "./dist/Query-SearchBox.es.js"
     }
   },
   "files": [
