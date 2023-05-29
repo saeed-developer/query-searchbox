@@ -1,9 +1,10 @@
 {
   "name": "query-searchbox",
+  "description": "An Advanced Query-like SearchBox for",
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "types": "dist/index.d.ts",
+  "types": "dist/components/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/Query-SearchBox.umd.js",
@@ -13,6 +14,19 @@
   "files": [
     "dist"
   ],
+  "author": "saeed",
+  "license": "MIT",
+  "homepage": "https://github.com/saeed-developer/query-searchbox",
+  "bugs" :{
+    "url" : "https://github.com/saeed-developer/query-searchbox/issues"
+  },
+  "keywords": [
+    "react" ,
+    "query",
+    "splunk",
+    "query-searchbox"
+  ],
+
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
