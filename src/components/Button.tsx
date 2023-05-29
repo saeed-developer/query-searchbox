@@ -9,6 +9,7 @@ export interface ButtonProps {
   buttonFontSize?: string;
   onClick: (arg: unknown) => void;
   onClickValue?: unknown;
+  buttonLoading?: boolean;
 }
 const Button = (props: ButtonProps) => {
   const {
@@ -20,6 +21,7 @@ const Button = (props: ButtonProps) => {
     buttonFontSize,
     onClick,
     onClickValue,
+    buttonLoading,
   } = props;
   const buttonStyles = useMemo(() => {
     return {
@@ -42,7 +44,7 @@ const Button = (props: ButtonProps) => {
       style={{ ...buttonStyles }}
       className={styles["button"]}
     >
-      {buttonTitle || "Search"}
+      {buttonLoading ? <div className="spinner" /> : buttonTitle || "Search"}
     </button>
   );
 };

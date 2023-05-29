@@ -19,7 +19,7 @@
   animation: openAnimation linear 0.5s forwards;
 }
 .isClose {
-  display:block ;
+  display: block;
   animation: closeAnimation linear 0.5s forwards;
 }
 @keyframes openAnimation {

@@ -32,6 +32,7 @@ const QuerySearchBox = memo((props: querySearchBoxProps) => {
     onCurrentChange,
     localSearchOnSteps,
     menuLoading,
+    buttonLoading,
   } = props;
   const [inputValue, setInpuValue] = useState<string>("");
   return (
@@ -58,6 +59,7 @@ const QuerySearchBox = memo((props: querySearchBoxProps) => {
         inputFontSize={inputFontSize}
       />
       <Button
+        buttonLoading={buttonLoading}
         buttonTitle={buttonTitle}
         buttonTitleColor={buttonTitleColor}
         buttonbackgroundColor={buttonbackgroundColor}
