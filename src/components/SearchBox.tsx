@@ -110,7 +110,7 @@ const SearchBox = (props: searchBoxProps) => {
   }, [step, onStepChange]);
   useEffect(() => {
     onCurrentChange && onCurrentChange(currentValue);
-  }, [currentValue, onCurrentChange]);
+  }, [currentValue]);
   useEffect(() => {
     if (localSearchOnSteps?.includes(step)) {
       const filtredSuggestion = suggests?.filter((item) =>
