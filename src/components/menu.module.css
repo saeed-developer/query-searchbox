@@ -12,11 +12,14 @@
   z-index: 99;
   position: absolute;
   box-shadow: 1px 1px 5px gray;
+  display: none;
 }
 .isOpen {
+  display: block;
   animation: openAnimation linear 0.5s forwards;
 }
 .isClose {
+  display:block ;
   animation: closeAnimation linear 0.5s forwards;
 }
 @keyframes openAnimation {

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./menu.module.css";
 export interface menuProps {
   menuValues: string[];
@@ -7,14 +7,19 @@ export interface menuProps {
   menuLoading?: boolean;
 }
 const Menu = (props: menuProps) => {
-  const { menuValues, onSelect, isOpen = false, menuLoading = false } = props;
+  const { menuValues, onSelect, isOpen, menuLoading = false } = props;
+  const menuLastState = useRef(false);
+  useEffect(() => {
+    menuLastState.current = isOpen;
+  }, [isOpen]);
   const ref = useRef<HTMLDivElement | null>(null);
   return (
     <div
       ref={ref}
-      // style={{ display: isOpen ? "block" : "none" }}
       className={`${styles["container"]} ${
-        isOpen ? styles["isOpen"] : styles["isClose"]
+        isOpen
+          ? styles["isOpen"]
+          : menuLastState.current === true && styles["isClose"]
       }`}
     >
       {menuLoading && <div className="spinner" />}
