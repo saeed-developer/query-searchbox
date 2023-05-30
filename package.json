@@ -1,6 +1,6 @@
 {
   "name": "query-searchbox",
-  "description": "An Advanced Query-like SearchBox for",
+  "description": "An Advanced Query-like SearchBox for react",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -37,15 +37,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format && yarn lint && tsc"
+      "pre-commit": "npx yarn format && npx yarn lint --bail && tsc --bail"
     }
-  },
-  "lint-staged": {
-    "*": [
-      "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-      "prettier --write .",
-      "tsc"
-    ]
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
