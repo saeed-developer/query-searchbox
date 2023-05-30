@@ -118,7 +118,7 @@ const SearchBox = (props: searchBoxProps) => {
   }, [inputValue, filterTypes, filters, operators]);
   useEffect(() => {
     onStepChange && onStepChange(step);
-  }, [step, onStepChange]);
+  }, [step]);
   useEffect(() => {
     onCurrentChange && onCurrentChange(currentValue);
   }, [currentValue]);
