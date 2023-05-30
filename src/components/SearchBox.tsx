@@ -15,7 +15,7 @@ export interface searchBoxProps
   onCurrentChange?: (value: string) => void;
   localSearchOnSteps?: number[];
 }
-function arrContainItem(arr: string[], word: string | undefined) {
+function isArrContainsItem(arr: string[], word: string | undefined) {
   if (!word) {
     return false;
   }
@@ -38,13 +38,13 @@ function detectStep({
   }
   const words = text.split(" ");
   const lastWord = words.at(-1);
-  if (arrContainItem(filters, lastWord)) {
+  if (isArrContainsItem(filters, lastWord)) {
     return 2;
-  } else if (arrContainItem(filterTypes, lastWord)) {
+  } else if (isArrContainsItem(filterTypes, lastWord)) {
     return 3;
-  } else if (arrContainItem(operators, lastWord)) {
+  } else if (isArrContainsItem(operators, lastWord)) {
     return 1;
-  } else if (arrContainItem(filterTypes, words.at(-2))) {
+  } else if (isArrContainsItem(filterTypes, words.at(-2))) {
     return 4;
   }
   return 0;
