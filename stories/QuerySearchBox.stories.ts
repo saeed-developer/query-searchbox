@@ -27,5 +27,6 @@ export const Primary: Story = {
     onInputChange(value) {
       console.log("inputValue ===>", value);
     },
+    localSearchOnSteps: [1],
   },
 };

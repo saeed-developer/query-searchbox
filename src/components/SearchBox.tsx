@@ -15,6 +15,17 @@ export interface searchBoxProps
   onCurrentChange?: (value: string) => void;
   localSearchOnSteps?: number[];
 }
+function arrContainItem(arr: string[], word: string | undefined) {
+  if (!word) {
+    return false;
+  }
+  for (let item of arr) {
+    if (item.toLocaleLowerCase() === word.toLocaleLowerCase()) {
+      return true;
+    }
+  }
+  return false;
+}
 function detectStep({
   operators,
   filters,
@@ -27,13 +38,13 @@ function detectStep({
   }
   const words = text.split(" ");
   const lastWord = words.at(-1);
-  if (filters.includes(lastWord as string)) {
+  if (arrContainItem(filters, lastWord)) {
     return 2;
-  } else if (filterTypes.includes(lastWord as string)) {
+  } else if (arrContainItem(filterTypes, lastWord)) {
     return 3;
-  } else if (operators.includes(lastWord as string)) {
+  } else if (arrContainItem(operators, lastWord)) {
     return 1;
-  } else if (filterTypes.includes(words.at(-2) as string)) {
+  } else if (arrContainItem(filterTypes, words.at(-2))) {
     return 4;
   }
   return 0;
@@ -114,7 +125,7 @@ const SearchBox = (props: searchBoxProps) => {
   useEffect(() => {
     if (localSearchOnSteps?.includes(step)) {
       const filtredSuggestion = suggests?.filter((item) =>
-        item?.startsWith(currentValue)
+        item?.toLocaleLowerCase()?.startsWith(currentValue.toLocaleLowerCase())
       );
       setFiltredSuggestion(filtredSuggestion);
     }
@@ -137,7 +148,7 @@ const SearchBox = (props: searchBoxProps) => {
     onInputChange && onInputChange(e.target.value);
   };
   return (
-    <div>
+    <div className={styles["container"]}>
       <div
         style={{ ...containerStyles }}
         className={styles["searchBoxContainer"]}

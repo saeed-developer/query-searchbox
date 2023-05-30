@@ -1,5 +1,9 @@
-.searchBoxContainer {
+.container {
   width: 100%;
+  height: 100%;
+}
+.searchBoxContainer {
+  min-width: 100%;
   height: 30px;
   background-color: #fff;
   font-size: 14px;
