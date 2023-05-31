@@ -1,5 +1,5 @@
 import { TDetectStep } from "../types/filter";
-import { removeQuotesIfExists, splitText } from "./QuotesHandler";
+import { removeQuotesIfExists, splitText } from "./quotesHandler";
 import { isArrContainsItem } from "./isArrContainsItem";
 
 export function detectStep({

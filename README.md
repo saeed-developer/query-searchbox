@@ -13,6 +13,11 @@ steps are:
 
 1- filters 2- filterTypes 3- filterValues 4- operators
 
+# Installation and usage
+
+```
+yarn add query-searchbox
+```
 ## Props
 
 ### Required props :

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./menu.module.css";
-import { addQuotesIfWhitespace } from "../utils/QuotesHandler";
+import { addQuotesIfWhitespace } from "../utils/quotesHandler";
 export interface menuProps {
   menuValues: string[];
   onSelect: (val: string) => void;
