@@ -20,7 +20,7 @@ export const Primary: Story = {
     onStepChange: (e) => {
       console.log("step ===>", e);
     },
-    filterValues: ["value1", "value2" , "value 3"],
+    filterValues: ["value1", "value2", "value 3"],
     onCurrentChange: (e) => {
       console.log("currentValue ===>", e);
     },

@@ -7,7 +7,7 @@ const meta = {
   tags: ["docsPage"],
   argTypes: {
     inputValue: {
-      control: 'text',
+      control: "text",
     },
   },
 } satisfies Meta<typeof SearchBox>;
@@ -26,6 +26,6 @@ export const Primary: Story = {
       console.log("currentValue ===>", e);
     },
     localSearchOnSteps: [1],
-    inputValue : "val"
+    inputValue: "val",
   },
 };
