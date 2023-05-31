@@ -6,9 +6,6 @@ const meta = {
   component: SearchBox,
   tags: ["docsPage"],
   argTypes: {
-    placeHolder: {
-      control: { type: "text" },
-    },
   },
 } satisfies Meta<typeof SearchBox>;
 export default meta;

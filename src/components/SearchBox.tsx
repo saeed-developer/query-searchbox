@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./searchBox.module.css";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
-import { TDetectStep, TUseSuggestion } from "../types/filter";
+import { TUseSuggestion } from "../types/filter";
 import { TSearchBox } from "../types/searchBox";
 import useSuggestion from "../hooks/useSuggestion";
 import Menu, { menuProps } from "./Menu";
 import { useFocusedElement } from "../hooks/useFocusedElement";
+import { detectStep } from "../utils/detectStep";
 export interface searchBoxProps
   extends TUseSuggestion,
     TSearchBox,
@@ -15,40 +16,7 @@ export interface searchBoxProps
   onCurrentChange?: (value: string) => void;
   localSearchOnSteps?: number[];
 }
-function isArrContainsItem(arr: string[], word: string | undefined) {
-  if (!word) {
-    return false;
-  }
-  for (let item of arr) {
-    if (item.toLocaleLowerCase() === word.toLocaleLowerCase()) {
-      return true;
-    }
-  }
-  return false;
-}
-function detectStep({
-  operators,
-  filters,
-  filterTypes,
-  inputValue,
-}: TDetectStep): number {
-  const text = inputValue.trimEnd();
-  if (!text) {
-    return 1;
-  }
-  const words = text.split(" ");
-  const lastWord = words.at(-1);
-  if (isArrContainsItem(filters, lastWord)) {
-    return 2;
-  } else if (isArrContainsItem(filterTypes, lastWord)) {
-    return 3;
-  } else if (isArrContainsItem(operators, lastWord)) {
-    return 1;
-  } else if (isArrContainsItem(filterTypes, words.at(-2))) {
-    return 4;
-  }
-  return 0;
-}
+
 const SearchBox = (props: searchBoxProps) => {
   const {
     inputColor,

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./menu.module.css";
+import { addQuotesIfWhitespace } from "../utils/QuotesHandler";
 export interface menuProps {
   menuValues: string[];
   onSelect: (val: string) => void;
@@ -13,6 +14,10 @@ const Menu = (props: menuProps) => {
     menuLastState.current = isOpen;
   }, [isOpen]);
   const ref = useRef<HTMLDivElement | null>(null);
+  const handleClick = (item: string) => {
+    const selected = addQuotesIfWhitespace(item);
+    onSelect(selected);
+  };
   return (
     <div
       ref={ref}
@@ -27,12 +32,7 @@ const Menu = (props: menuProps) => {
         !menuLoading &&
         menuValues?.map((item) => {
           return (
-            <div
-              className={styles["container-row"]}
-              onClick={() => {
-                onSelect(item);
-              }}
-            >
+            <div className={styles["container-row"]} onClick={handleClick}>
               {item}
             </div>
           );
