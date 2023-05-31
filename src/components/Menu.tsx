@@ -32,7 +32,12 @@ const Menu = (props: menuProps) => {
         !menuLoading &&
         menuValues?.map((item) => {
           return (
-            <div className={styles["container-row"]} onClick={handleClick}>
+            <div
+              className={styles["container-row"]}
+              onClick={() => {
+                handleClick(item);
+              }}
+            >
               {item}
             </div>
           );

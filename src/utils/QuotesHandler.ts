@@ -15,7 +15,7 @@ export function removeQuotesIfExists(value: string) {
 }
 
 export function splitText(text: string) {
-  let words = [];
+  const words = [];
   let isInQuotes = false;
   let currentWord = "";
 
